@@ -6,7 +6,7 @@ This will setup some commands, scripts, and PS1 for a Linux node. Only tested on
 
 ## Install
 
-```
+```bash
 export SCRIPT_NAME=k8s-dotfiles.sh
 curl -s https://raw.githubusercontent.com/ccollicutt/k8s-dotfile/main/$SCRIPT_NAME -o $SCRIPT_NAME
 bash $SCRIPT_NAME
@@ -16,7 +16,7 @@ source ~/.bashrc
 
 ## Update
 
-```
+```bash
 export SCRIPT_NAME=k8s-dotfiles.sh
 rm -f ~/.k8s-dotfiles/bin/$SCRIPT_NAME
 curl -s https://raw.githubusercontent.com/ccollicutt/k8s-dotfile/main/$SCRIPT_NAME -o $SCRIPT_NAME
@@ -27,7 +27,7 @@ source ~/.bashrc
 
 ## Uninstall
 
-```
+```bash
 rm -rf ~/.k8s-dotfiles
 ```
 
