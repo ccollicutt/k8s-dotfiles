@@ -2,7 +2,7 @@
 
 I got tired of not having all the right commands on a node for managing Kubernetes.
 
-This will setup some commands, scripts, and PS1 for a Linux node. Only tested on Ubuntu.
+This will setup some commands, scripts, and PS1 in `~/.k8s-dotfiles/`. Sourcing the script will be added to `~/.bashrc`.
 
 ## Install
 
