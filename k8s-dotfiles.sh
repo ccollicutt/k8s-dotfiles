@@ -58,7 +58,7 @@ fi
 
 if [[ ! -f "$BIN_DIR"/kube-ps1.sh ]]; then 
   pushd "$BIN_DIR" > /dev/null || exit
-    wget https://raw.githubusercontent.com/jonmosco/kube-ps1/master/kube-ps1.sh
+    wget -q https://raw.githubusercontent.com/jonmosco/kube-ps1/master/kube-ps1.sh
   popd || exit 
 fi
   
@@ -95,7 +95,7 @@ complete -F _kube_namespaces kubens kns kn
 # kubeps1
 #
 
-# shellcheck source=.k8s-dotfiles/bin/kube-ps1.sh
+# shellcheck source=/home/runner/.k8s-dotfiles/bin/kube-ps1.sh
 source "$BIN_DIR"/kube-ps1.sh
 PS1='[\u@\h \W $(kube_ps1)]>\n\$ '
 

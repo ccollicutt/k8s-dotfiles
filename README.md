@@ -37,3 +37,5 @@ And remove the `source source <your user>/.k8s-dotfiles/bin/k8s-dotfiles.sh` lin
 ## TODO
 
 * Self updating
+* version script
+* version ps1 download
