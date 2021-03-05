@@ -95,6 +95,8 @@ complete -F _kube_namespaces kubens kns kn
 # kubeps1
 #
 
+# The source should work, but doesn't. Perhaps b/c running in a docker container?
+# shellcheck disable=SC1091
 # shellcheck source=/home/runner/.k8s-dotfiles/bin/kube-ps1.sh
 source "$BIN_DIR"/kube-ps1.sh
 PS1='[\u@\h \W $(kube_ps1)]>\n\$ '
