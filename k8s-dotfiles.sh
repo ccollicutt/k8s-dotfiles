@@ -6,6 +6,16 @@ DOT_DIR="$HOME/.k8s-dotfiles"
 BIN_DIR="$DOT_DIR/bin"
 
 #
+# check for commands
+#
+
+if ! command -v wget &> /dev/null
+then
+    echo "ERROR: need wget"
+    exit 1
+fi
+
+#
 # install into ~/.bashrc
 #
 
