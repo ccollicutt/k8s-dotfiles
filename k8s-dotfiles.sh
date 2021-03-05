@@ -9,30 +9,30 @@ BIN_DIR="$DOT_DIR/bin"
 # install into ~/.bashrc
 #
 
-if ! grep -q "^source $BIN_DIR/k8s-dotfiles.sh$" ~/.bashrc; then 
-  echo "source $BIN_DIR/k8s-dotfiles.sh" >> ~/.bashrc
+if ! grep -q "^source "$BIN_DIR"/k8s-dotfiles.sh$" ~/.bashrc; then 
+  echo "source "$BIN_DIR"/k8s-dotfiles.sh" >> ~/.bashrc
 fi
 
 #
 # Setup ~/bin
 #
 
-if [[ ! -d $BIN_DIR ]]; then 
-  mkdir -p $BIN_DIR
+if [[ ! -d "$BIN_DIR" ]]; then 
+  mkdir -p "$BIN_DIR"
 fi
 
 # add to path...
 
-if [[ ":$PATH:" != *":$BIN_DIR:"* ]]; then
-  PATH="${PATH:+"$PATH:"}$BIN_DIR"
+if [[ ":$PATH:" != *":"$BIN_DIR":"* ]]; then
+  PATH="${PATH:+"$PATH:"}"$BIN_DIR""
 fi
 
 #
 # Useful binaries and scripts
 # 
 
-if [[ ! -f $BIN_DIR/k8s-dotfiles.sh ]]; then 
-  if cp $SCRIPT_DIR/k8s-dotfiles.sh $BIN_DIR/; then
+if [[ ! -f "$BIN_DIR"/k8s-dotfiles.sh ]]; then 
+  if cp "$SCRIPT_DIR"/k8s-dotfiles.sh "$BIN_DIR"/; then
     echo "INFO: Copied $SCRIPT_DIR/k8s-dotfiles.sh to $BIN_DIR/k8s-dotfiles.sh"
   else 
     echo "ERROR: failed to copy to bindir"
@@ -40,26 +40,26 @@ if [[ ! -f $BIN_DIR/k8s-dotfiles.sh ]]; then
   fi
 fi
 
-if [[ ! -f $BIN_DIR/kubectx ]]; then 
-  pushd /tmp > /dev/null
+if [[ ! -f "$BIN_DIR"/kubectx ]]; then 
+  pushd /tmp > /dev/null || exit
     wget -q https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubectx_v0.9.3_linux_x86_64.tar.gz
-    tar zxvf kubectx_v0.9.3_linux_x86_64.tar.gz
-    mv kubectx $BIN_DIR/
-  popd
+    tar zxf kubectx_v0.9.3_linux_x86_64.tar.gz
+    mv kubectx "$BIN_DIR"/
+  popd || exit
 fi 
 
-if [[ ! -f $BIN_DIR/kubens ]]; then 
-  pushd /tmp > /dev/null
+if [[ ! -f "$BIN_DIR"/kubens ]]; then 
+  pushd /tmp > /dev/null || exit
     wget -q https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubens_v0.9.3_linux_x86_64.tar.gz
-    tar zxvf kubens_v0.9.3_linux_x86_64.tar.gz
-    mv kubens $BIN_DIR/
-  popd
+    tar zxf kubens_v0.9.3_linux_x86_64.tar.gz
+    mv kubens "$BIN_DIR"/
+  popd || exit
 fi 
 
-if [[ ! -f $BIN_DIR/kube-ps1.sh ]]; then 
-  pushd $BIN_DIR > /dev/null
+if [[ ! -f "$BIN_DIR"/kube-ps1.sh ]]; then 
+  pushd "$BIN_DIR" > /dev/null || exit
     wget https://raw.githubusercontent.com/jonmosco/kube-ps1/master/kube-ps1.sh
-  popd 
+  popd || exit 
 fi
   
 #
@@ -91,7 +91,7 @@ complete -F _kube_namespaces kubens kns kn
 # kubeps1
 #
 
-source $BIN_DIR/kube-ps1.sh
+source "$BIN_DIR"/kube-ps1.sh
 PS1='[\u@\h \W $(kube_ps1)]>\n\$ '
 
 #
