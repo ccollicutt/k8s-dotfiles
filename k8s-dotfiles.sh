@@ -9,8 +9,8 @@ BIN_DIR="$DOT_DIR/bin"
 # install into ~/.bashrc
 #
 
-if ! grep -q "^source "$BIN_DIR"/k8s-dotfiles.sh$" ~/.bashrc; then 
-  echo "source "$BIN_DIR"/k8s-dotfiles.sh" >> ~/.bashrc
+if ! grep -q "^source $BIN_DIR/k8s-dotfiles.sh$" ~/.bashrc; then 
+  echo "source $BIN_DIR/k8s-dotfiles.sh" >> ~/.bashrc
 fi
 
 #
@@ -23,8 +23,8 @@ fi
 
 # add to path...
 
-if [[ ":$PATH:" != *":"$BIN_DIR":"* ]]; then
-  PATH="${PATH:+"$PATH:"}"$BIN_DIR""
+if [[ ":$PATH:" != *":$BIN_DIR:"* ]]; then
+  PATH="${PATH:+"$PATH:"}$BIN_DIR"
 fi
 
 #
