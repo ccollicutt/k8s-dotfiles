@@ -95,6 +95,7 @@ complete -F _kube_namespaces kubens kns kn
 # kubeps1
 #
 
+# shellcheck source=.k8s-dotfiles/bin/kube-ps1.sh
 source "$BIN_DIR"/kube-ps1.sh
 PS1='[\u@\h \W $(kube_ps1)]>\n\$ '
 
