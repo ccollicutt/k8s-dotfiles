@@ -20,6 +20,9 @@ jobs:
       - name: run script 
         run: bash k8s-dotfiles.sh
 
+      - name: find k8s-dotfiles
+        run: find /home/runner/.k8s-dotfiles
+
       # Runs the Super-Linter action
       - name: Run Super-Linter
         uses: github/super-linter@v3
