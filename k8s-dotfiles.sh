@@ -92,7 +92,7 @@ complete -F _kube_namespaces kubens kns kn
 #
 
 source $BIN_DIR/kube-ps1.sh
-PS1='[\u@\h \W $(kube_ps1)]\$ '
+PS1='[\u@\h \W $(kube_ps1)]>\n\$ '
 
 #
 # kubernetes aliases
