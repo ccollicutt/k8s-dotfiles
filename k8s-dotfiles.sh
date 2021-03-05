@@ -23,8 +23,8 @@ fi
 
 # add to path...
 
-if [[ ":$PATH:" != *":$BIN_DIR/k8s-dotfiles.sh:"* ]]; then
-  PATH="${PATH:+"$PATH:"}$BIN_DIR/k8s-dotfiles.sh"
+if [[ ":$PATH:" != *":$BIN_DIR:"* ]]; then
+  PATH="${PATH:+"$PATH:"}$BIN_DIR"
 fi
 
 #
