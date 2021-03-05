@@ -23,7 +23,7 @@ Once it's installed, your shell would look somehting like this:
 
 And tools like `kubens` and `kubectx` will be availble.
 
-```
+```bash
 [root@k8s-cluster-1 ~ (⎈ |kubernetes-admin@kubernetes:kube-system)]
 # which kubectx
 /root/.k8s-dotfiles/bin/kubectx
@@ -31,7 +31,7 @@ And tools like `kubens` and `kubectx` will be availble.
 
 And there will be a bunch of aliases.
 
-```
+```bash
 [root@k8s-cluster-1 ~ (⎈ |kubernetes-admin@kubernetes:kube-system)]
 # alias | grep "alias k" | head -3
 alias k='kubectl'
