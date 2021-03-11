@@ -71,6 +71,28 @@ if [[ ! -f "$BIN_DIR"/kube-ps1.sh ]]; then
     wget -q https://raw.githubusercontent.com/jonmosco/kube-ps1/master/kube-ps1.sh
   popd || exit 
 fi
+
+if [[ ! -f "$BIN_DIR"/helm ]]; then 
+  pushd /tmp > /dev/null || exit
+    wget -q https://get.helm.sh/helm-v3.5.0-linux-amd64.tar.gz
+    tar zxf helm-v3.5.0-linux-amd64.tar.gz
+    mv linux-amd64/helm "$BIN_DIR"/
+    # cleanup
+    rm -rf /tmp/linux-amd64
+    rm -f /tmp/helm-v3.5.0-linux-amd64.tar.gz
+  popd || exit 
+fi
+
+if [[ ! -f "$BIN_DIR"/kustomize ]]; then 
+  pushd /tmp > /dev/null || exit
+    wget -q https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.9.2/kustomize_v3.9.2_linux_amd64.tar.gz
+    tar zxf kustomize_v3.9.2_linux_amd64.tar.gz
+    mv kustomize "$BIN_DIR"/
+    # cleanup a bit
+    rm -f /tmp/kustomize_v3.9.2_linux_amd64.tar.gz
+  popd || exit 
+fi
+
   
 #
 # kubectx and kubens alias and bash completion
