@@ -74,22 +74,23 @@ fi
 
 if [[ ! -f "$BIN_DIR"/helm ]]; then 
   pushd /tmp > /dev/null || exit
-    wget -q https://get.helm.sh/helm-v3.5.0-linux-amd64.tar.gz
-    tar zxf helm-v3.5.0-linux-amd64.tar.gz
+    HELM_FILE=helm-v3.5.3-linux-amd64.tar.gz
+    wget -q "https://get.helm.sh/$HELM_FILE"
+    tar zxf "$HELM_FILE"
     mv linux-amd64/helm "$BIN_DIR"/
     # cleanup
     rm -rf /tmp/linux-amd64
-    rm -f /tmp/helm-v3.5.0-linux-amd64.tar.gz
+    rm -f "/tmp/$HELM_FILE"
   popd || exit 
 fi
 
 if [[ ! -f "$BIN_DIR"/kustomize ]]; then 
   pushd /tmp > /dev/null || exit
-    wget -q https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.9.2/kustomize_v3.9.2_linux_amd64.tar.gz
-    tar zxf kustomize_v3.9.2_linux_amd64.tar.gz
+    wget -q https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv4.0.5/kustomize_v4.0.5_linux_amd64.tar.gz
+    tar zxf kustomize_v4.0.5_linux_amd64.tar.gz
     mv kustomize "$BIN_DIR"/
     # cleanup a bit
-    rm -f /tmp/kustomize_v3.9.2_linux_amd64.tar.gz
+    rm -f /tmp/kustomize_v4.0.5_linux_amd64.tar.gz
   popd || exit 
 fi
 
