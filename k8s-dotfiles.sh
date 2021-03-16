@@ -94,6 +94,17 @@ if [[ ! -f "$BIN_DIR"/kustomize ]]; then
   popd || exit 
 fi
 
+if [[ ! -f "$BIN_DIR"/powerline-go ]]; then 
+  pushd "$BIN_DIR" > /dev/null || exit
+    wget -q https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv4.0.5/kustomize_v4.0.5_linux_amd64.tar.gz \
+      -O powerline-go
+    chmod 755 powerline-go
+
+    # install powerline fonts
+    sudo apt-get install fonts-powerline 
+  popd || exit 
+fi
+
   
 #
 # kubectx and kubens alias and bash completion
@@ -131,8 +142,27 @@ complete -F _kube_namespaces kubens kns kn
 # The source should work, but doesn't. Perhaps b/c running in a docker container?
 # shellcheck disable=SC1091
 # shellcheck source=/home/runner/.k8s-dotfiles/bin/kube-ps1.sh
-source "$BIN_DIR"/kube-ps1.sh
-PS1='[\u@\h \W $(kube_ps1)]>\n\$ '
+# source "$BIN_DIR"/kube-ps1.sh
+# PS1='[\u@\h \W $(kube_ps1)]>\n\$ '
+
+#
+# powerline-go
+# 
+
+function _update_ps1() {
+    PS1="$($BIN_DIR/powerline-go -error $? -jobs $(jobs -p | wc -l))"
+
+    # Uncomment the following line to automatically clear errors after showing
+    # them once. This not only clears the error for powerline-go, but also for
+    # everything else you run in that shell. Don't enable this if you're not
+    # sure this is what you want.
+    
+    #set "?"
+}
+
+if [ "$TERM" != "linux" ] && [ -f "$BIN_DIR/powerline-go" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
 
 #
 # kubernetes aliases
