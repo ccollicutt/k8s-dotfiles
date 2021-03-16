@@ -22,5 +22,5 @@ jobs:
       # - name: source bashrc file
       #   run: source ~/.bashrc
       
-      - name: run kubectx 
-        run: source ~/.bashrc && env && command -v kubectx
+      # - name: run kubectx 
+      #   run: source ~/.bashrc && env && command -v kubectx
