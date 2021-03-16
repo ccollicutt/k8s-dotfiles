@@ -1,13 +1,10 @@
 #!/bin/bash
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-
-DOT_DIR="$HOME/.k8s-dotfiles"
-BIN_DIR="$DOT_DIR/bin"
-
-# 
-# setup a temp dir
-TMP_DIR=$(mktemp -d -t k8s-dotfiles-XXXXXXXXXX)
+readonly SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+readonly DOT_DIR="$HOME/.k8s-dotfiles"
+readonly BIN_DIR="$DOT_DIR/bin"
+# tmpdir
+readonly TMP_DIR=$(mktemp -d -t k8s-dotfiles-XXXXXXXXXX)
 
 #
 # check for commands
@@ -41,9 +38,9 @@ if [[ ":$PATH:" != *":$BIN_DIR:"* ]]; then
   PATH="${PATH:+"$PATH:"}$BIN_DIR"
 fi
 
-#
+###############################################################################
 # Useful binaries and scripts
-# 
+############################################################################### 
 
 if [[ ! -f "$BIN_DIR"/k8s-dotfiles.sh ]]; then 
   if cp "$SCRIPT_DIR"/k8s-dotfiles.sh "$BIN_DIR"/; then
@@ -82,9 +79,6 @@ if [[ ! -f "$BIN_DIR"/helm ]]; then
     wget -q "https://get.helm.sh/$HELM_FILE"
     tar zxf "$HELM_FILE"
     mv linux-amd64/helm "$BIN_DIR"/
-    # cleanup
-    rm -rf /tmp/linux-amd64
-    rm -f "/tmp/$HELM_FILE"
   popd || exit 
 fi
 
@@ -93,8 +87,6 @@ if [[ ! -f "$BIN_DIR"/kustomize ]]; then
     wget -q https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv4.0.5/kustomize_v4.0.5_linux_amd64.tar.gz
     tar zxf kustomize_v4.0.5_linux_amd64.tar.gz
     mv kustomize "$BIN_DIR"/
-    # cleanup a bit
-    rm -f /tmp/kustomize_v4.0.5_linux_amd64.tar.gz
   popd || exit 
 fi
 
@@ -103,7 +95,6 @@ if [[ ! -f "$BIN_DIR"/powerline-go ]]; then
     wget -q https://github.com/justjanne/powerline-go/releases/download/v1.21.0/powerline-go-linux-amd64 \
       -O powerline-go
     chmod 755 powerline-go
-
     # install powerline fonts
     sudo apt update && sudo apt-get install fonts-powerline -y
     echo "INFO: if fonts-powerline was just installed, may need to login again"
@@ -115,13 +106,12 @@ fi
 rm -rf "$TMP_DIR"
 
 
-########################################################################
+###############################################################################
 #
 # aliases etc
 # 
-#######################################################################
+###############################################################################
 
-  
 #
 # kubectx and kubens alias and bash completion
 #
