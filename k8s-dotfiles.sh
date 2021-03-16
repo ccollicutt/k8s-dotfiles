@@ -138,6 +138,9 @@ PS1='[\u@\h \W $(kube_ps1)]>\n\$ '
 # kubernetes aliases
 #
 
+# real get all...
+alias kall='kubectl api-resources --verbs list --namespaced -o name | xargs -n1 kubectl get --show-kind --ignore-not-found'
+
 alias k='kubectl'
 alias kdp='kubectl describe pod'
 alias krh='kubectl run --help | more'
