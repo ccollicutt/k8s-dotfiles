@@ -96,7 +96,7 @@ fi
 
 if [[ ! -f "$BIN_DIR"/powerline-go ]]; then 
   pushd "$BIN_DIR" > /dev/null || exit
-    wget -q https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv4.0.5/kustomize_v4.0.5_linux_amd64.tar.gz \
+    wget -q https://github.com/justjanne/powerline-go/releases/download/v1.21.0/powerline-go-linux-amd64 \
       -O powerline-go
     chmod 755 powerline-go
 
