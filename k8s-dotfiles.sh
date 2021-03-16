@@ -156,7 +156,7 @@ complete -F _kube_namespaces kubens kns kn
 # 
 
 function _update_ps1() {
-    PS1="$("$BIN_DIR"/powerline-go -error $?)"
+    PS1="$("$BIN_DIR"/powerline-go  -modules "venv,user,host,ssh,kube,cwd,perms,git,hg,jobs,exit,root" -error $?)"
 
     # Uncomment the following line to automatically clear errors after showing
     # them once. This not only clears the error for powerline-go, but also for
