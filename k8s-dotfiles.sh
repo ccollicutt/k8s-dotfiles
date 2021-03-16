@@ -158,7 +158,7 @@ function _update_ps1() {
     # everything else you run in that shell. Don't enable this if you're not
     # sure this is what you want.
     
-    #set "?"
+    set "?"
 }
 
 if [ "$TERM" != "linux" ] && [ -f "$BIN_DIR/powerline-go" ]; then
