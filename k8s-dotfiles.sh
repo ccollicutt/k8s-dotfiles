@@ -105,7 +105,7 @@ if [[ ! -f "$BIN_DIR"/powerline-go ]]; then
     chmod 755 powerline-go
 
     # install powerline fonts
-    sudo apt-update && sudo apt-get install fonts-powerline -y
+    sudo apt update && sudo apt-get install fonts-powerline -y
     echo "INFO: if fonts-powerline was just installed, may need to login again"
   popd || exit 
 fi
