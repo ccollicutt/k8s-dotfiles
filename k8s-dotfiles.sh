@@ -5,6 +5,10 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 DOT_DIR="$HOME/.k8s-dotfiles"
 BIN_DIR="$DOT_DIR/bin"
 
+# 
+# setup a temp dir
+TMP_DIR=$(mktemp -d -t k8s-dotfiles-XXXXXXXXXX)
+
 #
 # check for commands
 #
@@ -51,7 +55,7 @@ if [[ ! -f "$BIN_DIR"/k8s-dotfiles.sh ]]; then
 fi
 
 if [[ ! -f "$BIN_DIR"/kubectx ]]; then 
-  pushd /tmp > /dev/null || exit
+  pushd "$TMP_DIR" > /dev/null || exit
     wget -q https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubectx_v0.9.3_linux_x86_64.tar.gz
     tar zxf kubectx_v0.9.3_linux_x86_64.tar.gz
     mv kubectx "$BIN_DIR"/
@@ -73,7 +77,7 @@ if [[ ! -f "$BIN_DIR"/kube-ps1.sh ]]; then
 fi
 
 if [[ ! -f "$BIN_DIR"/helm ]]; then 
-  pushd /tmp > /dev/null || exit
+  pushd "$TMP_DIR" > /dev/null || exit
     HELM_FILE=helm-v3.5.3-linux-amd64.tar.gz
     wget -q "https://get.helm.sh/$HELM_FILE"
     tar zxf "$HELM_FILE"
@@ -85,7 +89,7 @@ if [[ ! -f "$BIN_DIR"/helm ]]; then
 fi
 
 if [[ ! -f "$BIN_DIR"/kustomize ]]; then 
-  pushd /tmp > /dev/null || exit
+  pushd "$TMP_DIR" > /dev/null || exit
     wget -q https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv4.0.5/kustomize_v4.0.5_linux_amd64.tar.gz
     tar zxf kustomize_v4.0.5_linux_amd64.tar.gz
     mv kustomize "$BIN_DIR"/
@@ -105,6 +109,17 @@ if [[ ! -f "$BIN_DIR"/powerline-go ]]; then
     echo "INFO: if fonts-powerline was just installed, may need to login again"
   popd || exit 
 fi
+
+
+# cleanup 
+rm -rf "$TMP_DIR"
+
+
+########################################################################
+#
+# aliases etc
+# 
+#######################################################################
 
   
 #
