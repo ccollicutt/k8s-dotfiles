@@ -64,3 +64,4 @@ And remove the `source source <your user>/.k8s-dotfiles/bin/k8s-dotfiles.sh` lin
 * Self updating
 * version script
 * version ps1 download
+* don't use raw github for deploying (300 second update)
