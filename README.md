@@ -8,7 +8,7 @@ This will setup some commands, scripts, and PS1 in `~/.k8s-dotfiles/`. Sourcing 
 
 ```bash
 export SCRIPT_NAME=k8s-dotfiles.sh
-curl -s https://raw.githubusercontent.com/ccolllicutt/k8s-dotfiles/main/$SCRIPT_NAME -o $SCRIPT_NAME
+curl -s https://raw.githubusercontent.com/ccollicutt/k8s-dotfiles/main/$SCRIPT_NAME -o $SCRIPT_NAME
 bash $SCRIPT_NAME
 rm $SCRIPT_NAME
 source ~/.bashrc
