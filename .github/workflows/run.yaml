@@ -18,6 +18,9 @@ jobs:
 
       - name: run script 
         run: bash k8s-dotfiles.sh
+
+      - name: source bashrc file
+        run: source ~/.bashrc
       
       - name: run kubectx 
         run: command -v kubectx
