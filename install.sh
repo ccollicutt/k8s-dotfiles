@@ -110,7 +110,7 @@ function cleanup_tmp(){
 # main
 #
 
-main() {
+run_main() {
 
   check_for_commands
   create_bin_dir
