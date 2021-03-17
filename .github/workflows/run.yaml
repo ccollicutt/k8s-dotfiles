@@ -1,31 +1,19 @@
-name: run-script
+name: Run Bats tests
 
-# Run this workflow every time a new commit pushed to your repository
-on: push
+on:
+  push:
+    tags:
+      - main
 
 jobs:
-  # Set the job key. The key is displayed as the job name
-  # when a job name is not provided
-  super-lint:
-    # Name the Job
-    name: run the script
-    # Set the type of machine to run on
+  test:
+    name: Test Docker container
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v2
-
-      - name: install packages
-        run: sudo apt update && sudo apt install -y bats git
-      
-      - name: run script 
-        run: mkdir -p /opt/bats-test-helpers && \
-             git clone https://github.com/ztombol/bats-support /opt/bats-test-helpers/bats-support && \
-             git clone https://github.com/ztombol/bats-assert  /opt/bats-test-helpers/bats-assert && \
-             git clone https://github.com/lox/bats-mock /opt/bats-test-helpers/bats-mock
-
-      - name: run bats test
-        run: ./tests/test_install.bats
-
-      
+      - name: Run Bats tests
+        uses: ffurrer2/bats-action@v1
+        with:
+          community: docker-cli
+          args: ./test/test_install.bats
