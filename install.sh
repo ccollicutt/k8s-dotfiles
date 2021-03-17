@@ -11,6 +11,20 @@ function check_for_commands(){
   fi
 }
 
+function check_os_version(){
+  if ! command -v lsb_release &> /dev/null; then
+    echo "ERROR: lsb_release not found"
+    echo "INFO: only tested on ubuntu bionic and focal"
+    exit 1
+  fi
+
+  OS_VERSION=`lsb_release -c -s`
+  if [[ "$OS_VERSION" != "focal" || "$OS_VERSION" != "bionic" ]]; then
+    echo "INFO: only tested on ubuntu bionic and focal"
+    exit 1
+  fi
+}
+
 # fix popd/push
 pushd () {
     command pushd "$@" > /dev/null
@@ -25,7 +39,6 @@ function install_into_bashrc(){
   if ! grep -q "^source $BIN_DIR/k8sdotfilesrc$" ~/.bashrc; then 
     echo "source $BIN_DIR/k8sdotfilesrc" >> ~/.bashrc
   fi
-
 }
 
 # create the bin dir that we put our useful binaries in 
@@ -111,6 +124,7 @@ function cleanup_tmp(){
 
 run_main() {
 
+  check_os_version
   check_for_commands
   create_bin_dir
   install_binaries

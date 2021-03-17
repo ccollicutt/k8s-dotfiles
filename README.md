@@ -12,6 +12,10 @@ cd k8s-dotfiles
 ./install.sh
 ```
 
+## Testing
+
+See [testing readme[](tests/README.md).
+
 ## TODO
 
 * Self updating
