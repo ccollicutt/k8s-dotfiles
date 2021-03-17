@@ -1,9 +1,6 @@
 name: Run Bats tests
 
-on:
-  push:
-    tags:
-      - main
+on: push
 
 jobs:
   test:
