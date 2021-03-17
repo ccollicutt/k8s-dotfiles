@@ -1,5 +1,7 @@
 # k8s-dotfiles.sh
 
+[![Run Bats tests](https://github.com/ccollicutt/k8s-dotfiles/actions/workflows/run.yaml/badge.svg)](https://github.com/ccollicutt/k8s-dotfiles/actions/workflows/run.yaml)
+
 I got tired of not having all the right commands on a node for managing Kubernetes.
 
 This will setup some commands, scripts, and PS1 in `~/.k8s-dotfiles/`. Sourcing the script will be added to `~/.bashrc`.
