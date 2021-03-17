@@ -72,7 +72,7 @@ function install_binaries(){
   fi 
 
   if [[ ! -f "$BIN_DIR"/kubens ]]; then 
-    pushd /tmp || exit 1
+    pushd "$TMP_DIR" || exit 1
       wget -q https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubens_v0.9.3_linux_x86_64.tar.gz
       tar zxf kubens_v0.9.3_linux_x86_64.tar.gz
       mv kubens "$BIN_DIR"/
