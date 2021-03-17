@@ -1,7 +1,6 @@
 #!/usr/bin/env bats
-load '/opt/bats-test-helpers/bats-support/load.bash'
-load '/opt/bats-test-helpers/bats-assert/load.bash'
-load '/opt/bats-test-helpers/lox-bats-mock/stub.bash'
+load '/opt/bats-support/load.bash'
+load '/opt/bats-assert/load.bash'
 
 @test "check_for_commands should return 0" {
   source /code/install.sh
