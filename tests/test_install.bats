@@ -3,31 +3,31 @@ load '/opt/bats-support/load.bash'
 load '/opt/bats-assert/load.bash'
 
 @test "check_for_commands should return 0" {
-  source /code/install.sh
+  source install.sh
   run check_for_commands
   assert_success
 }
 
 @test "check_bin_dir should return 0" {
-  source /code/install.sh
+  source install.sh
   run create_bin_dir
   assert_success 
 }
 
 @test "install_binaries should return 0" {
-  source /code/install.sh
+  source install.sh
   run install_binaries
   assert_success
 }
 
 @test "install_k8sdotfile should return 0" {
-  source /code/install.sh
+  source install.sh
   run install_k8sdotfile
   assert_success
 }
 
 @test "install_into_bashrc should return 0" {
-  source /code/install.sh
+  source install.sh
   run install_into_bashrc
   assert_success
 }
