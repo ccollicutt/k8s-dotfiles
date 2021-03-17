@@ -2,6 +2,9 @@
 # Useful aliases and completions for kubernetes
 #
 
+DOT_DIR="$HOME/.k8s-dotfiles"
+BIN_DIR="$DOT_DIR/bin"
+
 alias kc=kubectx
 alias kn=kubens
 
