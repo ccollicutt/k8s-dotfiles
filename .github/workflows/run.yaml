@@ -16,15 +16,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: install packages
+        run: sudo apt-update && apt-get install -y bats git
+      
       - name: run script 
         run: mkdir -p /opt/bats-test-helpers && \
              git clone https://github.com/ztombol/bats-support /opt/bats-test-helpers/bats-support && \
              git clone https://github.com/ztombol/bats-assert  /opt/bats-test-helpers/bats-assert && \
              git clone https://github.com/lox/bats-mock /opt/bats-test-helpers/bats-mock
-
-
-      - name: install bats package
-        run: sudo apt-update && apt-get install -y bats
 
       - name: run bats test
         run: ./tests/test_install.bats
