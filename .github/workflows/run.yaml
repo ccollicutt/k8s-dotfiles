@@ -23,7 +23,11 @@ jobs:
              git clone https://github.com/ztombol/bats-assert  && \
              git clone https://github.com/lox/bats-mock 
 
-      - name: run bats tests
+
+      - name: install bats package
+        run: sudo apt-update && apt-get install -y bats
+
+      - name: run bats test
         run: ./tests/test_install.bats
-        uses: bats/bats:latest
+
       
