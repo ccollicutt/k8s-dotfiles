@@ -2,21 +2,21 @@
 
 Create a docker image with bats.
 
-```
+```bash
 cd bats
 ./build.sh 
 ```
 
 Run scripts.
 
-```
+```bash
 # from main level 
 ./tests.sh 
 ```
 
 Example output:
 
-```
+```bash
 $ ./test.sh 
 1..12
 ok 1 check_for_commands should return 0
