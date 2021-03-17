@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: run script 
-        run: bash k8s-dotfiles.sh
+        run: bash install.sh
 
       - name: find k8s-dotfiles
         run: find /home/runner/.k8s-dotfiles

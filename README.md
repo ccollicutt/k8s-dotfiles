@@ -6,58 +6,46 @@ This will setup some commands, scripts, and PS1 in `~/.k8s-dotfiles/`. Sourcing 
 
 ## Install
 
-```bash
-export SCRIPT_NAME=k8s-dotfiles.sh
-curl -s https://raw.githubusercontent.com/ccollicutt/k8s-dotfiles/main/$SCRIPT_NAME -o $SCRIPT_NAME
-bash $SCRIPT_NAME
-rm $SCRIPT_NAME
-source ~/.bashrc
+```
+git clone https://github.com/ccollicutt/k8s-dotfiles
+cd k8s-dotfiles
+./install.sh
 ```
 
-Once it's installed, your shell would look somehting like this:
+## Testing 
 
-```bash
-[root@k8s-cluster-1 ~ (⎈ |kubernetes-admin@kubernetes:kube-system)]
-# 
+Create a docker image with bats.
+
+```
+cd bats
+./build.sh 
 ```
 
-And tools like `kubens` and `kubectx` will be availble.
+Run scripts.
 
-```bash
-[root@k8s-cluster-1 ~ (⎈ |kubernetes-admin@kubernetes:kube-system)]
-# which kubectx
-/root/.k8s-dotfiles/bin/kubectx
+```
+# from main level 
+./tests.sh 
 ```
 
-And there will be a bunch of aliases.
+Example output:
 
-```bash
-[root@k8s-cluster-1 ~ (⎈ |kubernetes-admin@kubernetes:kube-system)]
-# alias | grep "alias k" | head -3
-alias k='kubectl'
-alias kc='kubectx'
-alias kd='kubectl describe pod'
 ```
-
-## Update
-
-```bash
-export SCRIPT_NAME=k8s-dotfiles.sh
-rm -f ~/.k8s-dotfiles/bin/$SCRIPT_NAME
-curl -s https://raw.githubusercontent.com/ccollicutt/k8s-dotfiles/main/$SCRIPT_NAME -o $SCRIPT_NAME
-bash $SCRIPT_NAME
-rm $SCRIPT_NAME
-source ~/.bashrc
+$ ./test.sh 
+1..12
+ok 1 check_for_commands should return 0
+ok 2 check_bin_dir should return 0
+ok 3 install_binaries should return 0
+ok 4 install_k8sdotfile should return 0
+ok 5 install_into_bashrc should return 0
+ok 6 k8sdotfilerc should exist in home directory
+ok 7 k8sdotfilesrc should be sourced in users .bashrc
+ok 8 check if kubectx exists and is executable
+ok 9 check if kubens exists and is executable
+ok 10 check if helm exists and is executable
+ok 11 check if kustomize exists and is executable
+ok 12 check if powerline-go exists and is executable
 ```
-
-## Uninstall
-
-```bash
-rm -rf ~/.k8s-dotfiles
-```
-
-And remove the `source source <your user>/.k8s-dotfiles/bin/k8s-dotfiles.sh` line from `.bashrc`.
-
 
 ## TODO
 
