@@ -1,5 +1,5 @@
 FROM bats/bats:latest
 
-COPY ./temp_clone_dir /opt/bats-test-helpers
+COPY ./temp_clone_dir /opt/
 
-WORKDIR /code/
+WORKDIR /

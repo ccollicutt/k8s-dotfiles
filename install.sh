@@ -9,7 +9,6 @@ function check_for_commands(){
       echo "ERROR: need wget"
       exit 1
   fi
-
 }
 
 # fix popd/push
@@ -18,7 +17,7 @@ pushd () {
 }
 
 popd () {
-    command popd "$@" > /dev/null
+    command popd > /dev/null
 }
 
 # ensure k8sdotfilesrc is sourced in ~/.bashrc
