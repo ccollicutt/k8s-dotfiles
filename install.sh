@@ -19,7 +19,7 @@ function check_os_version(){
   fi
 
   OS_VERSION=$(lsb_release -c -s | tr -d '\n')
-  if [[ "$OS_VERSION" != "focal" || "$OS_VERSION" != "bionic" ]]; then
+  if [[ "$OS_VERSION" != "focal" && "$OS_VERSION" != "bionic" ]]; then
     echo "INFO: only tested on ubuntu bionic and focal"
     exit 1
   fi

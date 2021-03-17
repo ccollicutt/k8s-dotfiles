@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 [ -d "temp_clone_dir" ] && rm -rf "temp_clone_dir"
 mkdir temp_clone_dir
 
