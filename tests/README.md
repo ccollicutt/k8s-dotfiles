@@ -7,7 +7,7 @@ cd bats
 ./build.sh 
 ```
 
-Run scripts.
+Run script.
 
 ```bash
 # from main level 
