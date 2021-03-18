@@ -42,6 +42,9 @@ load '/opt/bats-assert/load.bash'
   assert_success
 }
 
+@test "check if kubectl exists and is executable" {
+  assert [ -x "$HOME/.k8s-dotfiles/bin/kubectl" ]
+}
 @test "check if kubectx exists and is executable" {
   assert [ -x "$HOME/.k8s-dotfiles/bin/kubectx" ]
 }

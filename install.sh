@@ -63,6 +63,14 @@ function install_k8sdotfile(){
 # install useful binaries, like helm, into the $BIN_DIR
 function install_binaries(){
 
+
+  if [[ ! -f "$BIN_DIR"/powerline-go ]]; then 
+    pushd "$BIN_DIR" || exit 1
+      wget -q "https://dl.k8s.io/release/v1.20.4/bin/linux/amd64/kubectl"
+      chmod 755 kubectl
+    popd || exit 1
+  fi
+
   if [[ ! -f "$BIN_DIR"/kubectx ]]; then 
     pushd "$TMP_DIR" || exit 1
       wget -q https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubectx_v0.9.3_linux_x86_64.tar.gz
