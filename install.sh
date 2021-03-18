@@ -117,21 +117,19 @@ function install_binaries(){
 function cleanup_tmp(){
   rm -rf "$TMP_DIR"
 }
+trap cleanup_tmp EXIT
 
 # 
 # main
 #
 
 run_main() {
-
   check_os_version
   check_for_commands
   create_bin_dir
   install_binaries
   install_k8sdotfile
   install_into_bashrc
-  cleanup_tmp
-
 }
 
 # 

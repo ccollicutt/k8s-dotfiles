@@ -45,7 +45,7 @@ complete -F _kube_namespaces kubens kns kn
 # 
 
 function _update_ps1() {
-     PS1="$("$BIN_DIR"/powerline-go -cwd-mode dironly -modules venv,user,host,ssh,cwd,perms,exit -modules-right git,kube -max-width 60 -priority ssh,host,cwd,exit,kube -error $? -newline)"
+    PS1="$("$BIN_DIR"/powerline-go -cwd-mode dironly -modules venv,user,host,ssh,cwd,perms,exit -modules-right git,kube -max-width 60 -priority ssh,host,cwd,exit,kube -error $? -newline)"
 
     # Uncomment the following line to automatically clear errors after showing
     # them once. This not only clears the error for powerline-go, but also for
