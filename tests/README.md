@@ -1,4 +1,4 @@
-# Testing 
+# Testing
 
 Create a docker image with bats.
 
