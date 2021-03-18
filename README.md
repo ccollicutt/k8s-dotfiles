@@ -16,7 +16,7 @@ cd k8s-dotfiles
 
 ## Testing
 
-See [testing readme[](tests/README.md).
+See [testing readme](tests/README.md).
 
 ## TODO
 
