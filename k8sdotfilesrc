@@ -5,6 +5,10 @@
 DOT_DIR="$HOME/.k8s-dotfiles"
 BIN_DIR="$DOT_DIR/bin"
 
+if [[ ":$PATH:" != *":$BIN_DIR:"* ]]; then
+  PATH="${PATH:+"$PATH:"}$BIN_DIR"
+fi
+
 alias kc=kubectx
 alias kn=kubens
 

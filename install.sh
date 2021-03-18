@@ -20,7 +20,7 @@ function check_os_version(){
 
   OS_VERSION=$(lsb_release -c -s | tr -d '\n')
   if [[ "$OS_VERSION" != "focal" && "$OS_VERSION" != "bionic" ]]; then
-    echo "INFO: only tested on ubuntu bionic and focal"
+    echo "ERROR: only tested on ubuntu bionic and focal"
     exit 1
   fi
 }
@@ -107,10 +107,21 @@ function install_binaries(){
       wget -q https://github.com/justjanne/powerline-go/releases/download/v1.21.0/powerline-go-linux-amd64 \
         -O powerline-go
       chmod 755 powerline-go
-      # install powerline fonts
-      sudo apt update && sudo apt-get install fonts-powerline -y
-      echo "INFO: if fonts-powerline was just installed, may need to login again"
     popd || exit 1
+  fi
+}
+
+function install_packages(){
+  # install powerline fonts
+  if ! dpkg -l fonts-powerline > /dev/null; then
+    if [[ $EUID -ne 0 ]]; then
+      sudo apt update
+      sudo apt install -y fonts-powerline
+    else
+      # is root
+      apt update
+      apt install -y fonts-powerline
+    fi
   fi
 }
 
@@ -128,6 +139,7 @@ run_main() {
   check_for_commands
   create_bin_dir
   install_binaries
+  install_packages
   install_k8sdotfile
   install_into_bashrc
 }
