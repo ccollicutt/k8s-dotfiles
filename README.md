@@ -12,7 +12,7 @@ cd k8s-dotfiles
 ./install.sh
 ```
 
-## Run from Docker 
+## Run from Docker
 
 Build the image:
 
