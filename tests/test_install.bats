@@ -64,3 +64,15 @@ load '/opt/bats-assert/load.bash'
 @test "check if powerline-go exists and is executable" {
   assert [ -x "$HOME/.k8s-dotfiles/bin/powerline-go" ]
 }
+
+@test "check_for_commands should fail if no wget" {
+  source install.sh
+  rm -f /usr/bin/wget 
+  run check_for_commands
+  assert_failure
+}
+
+@test "check if path is set after sourcing k8sdotfilerc" {
+  source $HOME/.bashrc
+  echo $PATH | grep "\.k8s-dotfiles\/bin"
+}
