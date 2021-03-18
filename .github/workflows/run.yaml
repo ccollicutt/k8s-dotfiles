@@ -1,4 +1,4 @@
-name: Run Bats tests
+name: Bats tests
 
 on: push
 
