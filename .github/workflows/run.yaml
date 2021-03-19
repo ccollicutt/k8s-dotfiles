@@ -4,13 +4,13 @@ on: push
 
 jobs:
   linux:
-  strategy:
-    matrix:
-      container:
-      - 'debian:latest'
-      - 'ubuntu:18.04'
-      - 'ubuntu:20.04'
-      - 'centos:latest'
+    strategy:
+      matrix:
+        container:
+        - 'debian:latest'
+        - 'ubuntu:18.04'
+        - 'ubuntu:20.04'
+        - 'centos:latest'
   test:
     name: Test Docker container
     runs-on: ubuntu-latest
