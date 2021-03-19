@@ -17,7 +17,7 @@ source ~/.bashrc
 
 At this point your shell should be configured by `k8s-dotfiles` and you can remove the repository.
 
-```
+```bash
 rm -rf k8s-dotfiles
 ```
 
