@@ -14,7 +14,15 @@ function check_for_commands(){
 function log(){
   LEVEL=$1
   MSG=$2
-  echo "$LEVEL" "$MSG"
+
+  # only log debug messages if the DEBUG env var is set to true
+  if [ "$LEVEL" != "debug" ]; then
+    echo "$LEVEL:" "$MSG" 
+  elif [ "$DEBUG" = "true" ] && [ "$LEVEL" = "debug" ]; then
+    echo "$LEVEL:" "$MSG" 
+  fi
+
+  # exit on error message
   if [ "$LEVEL" = "error" ]; then
     echo "exiting..."
     exit 1
@@ -26,7 +34,6 @@ function check_os_version(){
   # by default will be false, but script has option to skip
   if ! command -v lsb_release &> /dev/null; then
     log error "lsb_release not found, please install it or use ubuntu bionic or focal"
-    log info "only tested on ubuntu bionic and focal"
     exit 1
   fi
   OS_VERSION=$(lsb_release -c -s | tr -d '\n')
@@ -63,7 +70,7 @@ function create_bin_dir() {
 function install_k8sdotfile(){
   if [[ ! -f "$BIN_DIR"/k8sdotfilesrc ]]; then 
     if cp "$SCRIPT_DIR"/k8sdotfilesrc "$BIN_DIR"/; then
-      log info "Copied $SCRIPT_DIR/k8sdotfilesrc to $BIN_DIR/k8sdotfilesrc"
+      log debug "copied $SCRIPT_DIR/k8sdotfilesrc to $BIN_DIR/k8sdotfilesrc"
     else 
       log error "failed to copy to bindir"
       exit 1
@@ -154,14 +161,19 @@ trap cleanup_tmp EXIT
 
 run_main() {
 
+  # only run these if skip check is false
   if [ "$SKIP_OS_CHECK" != "true" ]; then
     check_os_version
     install_packages
   fi
   check_for_commands
+  log info "creating ~/.k8s-dotfiles directory"
   create_bin_dir
+  log info "installing useful binaries"
   install_binaries
+  log info "installing k8sdotfilerc"
   install_k8sdotfile
+  log info "adding sourcing to ~/.bashrc"
   install_into_bashrc
 
   echo "***********************************************************************"
@@ -195,7 +207,7 @@ while getopts ":hs" opt; do
   esac
 done
 
-# Only run main if running from scripts not testing with bats
+# only run main if running from scripts not testing with bats
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]
 then
   run_main
