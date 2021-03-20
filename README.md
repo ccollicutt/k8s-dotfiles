@@ -31,9 +31,9 @@ Build the image:
 
 It will output a docker run command to use the docker image just built to mount ~/.kube into the container and have the utilities available without having to install it locally. Or you could use this to test it out.
 
-## Uninstall 
+## Uninstall
 
-* Edit ~/.bashrc and remove the source line 
+* Edit ~/.bashrc and remove the source line
 
 ```bash
 rm -rf ~/.k8s-dotfiles
