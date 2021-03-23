@@ -68,6 +68,12 @@ if [ "$TERM" != "linux" ] && [ -f "$BIN_DIR/powerline-go" ]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
+# 
+# z
+#
+
+source $BIN_DIR/z.sh
+
 #
 # kubernetes aliases
 #

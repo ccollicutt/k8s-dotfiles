@@ -12,8 +12,8 @@ function check_for_commands(){
 }
 
 function log(){
-  LEVEL=$1
-  MSG=$2
+  local LEVEL=$1
+  local MSG=$2
 
   # only log debug messages if the DEBUG env var is set to true
   if [ "$LEVEL" != "debug" ]; then
@@ -104,9 +104,10 @@ function install_binaries(){
     popd || log error "pushd fail"
   fi 
 
-  if [[ ! -f "$BIN_DIR"/kube-ps1.sh ]]; then 
+  # install z
+  if [[ ! -f "$BIN_DIR"/z.sh ]]; then 
     pushd "$BIN_DIR" || log error "pushd fail"
-      wget -q https://raw.githubusercontent.com/jonmosco/kube-ps1/master/kube-ps1.sh
+      wget -q https://raw.githubusercontent.com/rupa/z/master/z.sh
     popd || log error "pushd fail"
   fi
 
@@ -132,6 +133,13 @@ function install_binaries(){
       wget -q https://github.com/justjanne/powerline-go/releases/download/v1.21.0/powerline-go-linux-amd64 \
         -O powerline-go
       chmod 755 powerline-go
+    popd || log error "pushd fail"
+  fi
+
+
+  if [[ ! -f "$BIN_DIR"/kube-ps1.sh ]]; then 
+    pushd "$BIN_DIR" || log error "pushd fail"
+      wget -q https://raw.githubusercontent.com/jonmosco/kube-ps1/master/kube-ps1.sh
     popd || log error "pushd fail"
   fi
 }
