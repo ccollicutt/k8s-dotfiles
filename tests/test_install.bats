@@ -33,7 +33,7 @@ load '/opt/bats-assert/load.bash'
   assert_success
 }
 
-@test "k8sdotfilerc should exist in home directory" {
+@test "k8sdotfilerc should exist in bin dir" {
   assert [ -e "$HOME/.k8s-dotfiles/bin/k8sdotfilesrc" ]
 }
 
@@ -70,6 +70,10 @@ load '/opt/bats-assert/load.bash'
   rm -f /usr/bin/wget 
   run check_for_commands
   assert_failure
+}
+
+@test "z.sh should exist in bin dir" {
+  assert [ -e "$HOME/.k8s-dotfiles/bin/z.sh" ]
 }
 
 @test "check if path is set after sourcing k8sdotfilerc" {
