@@ -146,6 +146,7 @@ function install_binaries(){
   if [[ ! -f "$BIN_DIR"/konfig ]]; then 
     pushd "$BIN_DIR" || log error "pushd fail"
       wget -q https://raw.githubusercontent.com/corneliusweig/konfig/master/konfig
+      chmod 755 konfig
     popd || log error "pushd fail"
   fi
 
