@@ -65,6 +65,8 @@ load '/opt/bats-assert/load.bash'
   assert [ -x "$HOME/.k8s-dotfiles/bin/powerline-go" ]
 }
 
+
+
 @test "check_for_commands should fail if no wget" {
   source install.sh
   rm -f /usr/bin/wget 
@@ -74,6 +76,10 @@ load '/opt/bats-assert/load.bash'
 
 @test "z.sh should exist in bin dir" {
   assert [ -e "$HOME/.k8s-dotfiles/bin/z.sh" ]
+}
+
+@test "konfig should exist in bin dir" {
+  assert [ -e "$HOME/.k8s-dotfiles/bin/konfig" ]
 }
 
 @test "check if path is set after sourcing k8sdotfilerc" {

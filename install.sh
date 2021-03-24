@@ -142,6 +142,13 @@ function install_binaries(){
       wget -q https://raw.githubusercontent.com/jonmosco/kube-ps1/master/kube-ps1.sh
     popd || log error "pushd fail"
   fi
+
+  if [[ ! -f "$BIN_DIR"/konfig ]]; then 
+    pushd "$BIN_DIR" || log error "pushd fail"
+      wget -q https://raw.githubusercontent.com/corneliusweig/konfig/master/konfig
+    popd || log error "pushd fail"
+  fi
+
 }
 
 function install_packages(){
