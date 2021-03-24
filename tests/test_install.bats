@@ -78,8 +78,8 @@ load '/opt/bats-assert/load.bash'
   assert [ -e "$HOME/.k8s-dotfiles/bin/z.sh" ]
 }
 
-@test "konfig should exist in bin dir" {
-  assert [ -e "$HOME/.k8s-dotfiles/bin/konfig" ]
+@test "konfig should exist in bin dir and be executable" {
+  assert [ -x "$HOME/.k8s-dotfiles/bin/konfig" ]
 }
 
 @test "check if path is set after sourcing k8sdotfilerc" {
