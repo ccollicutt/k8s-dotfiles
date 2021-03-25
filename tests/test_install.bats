@@ -65,6 +65,9 @@ load '/opt/bats-assert/load.bash'
   assert [ -x "$HOME/.k8s-dotfiles/bin/powerline-go" ]
 }
 
+@test "check if kubectl-whoami exists and is executable" {
+  assert [ -x "$HOME/.k8s-dotfiles/bin/kubectl-whoami" ]
+}
 
 
 @test "check_for_commands should fail if no wget" {

@@ -150,6 +150,15 @@ function install_binaries(){
     popd || log error "pushd fail"
   fi
 
+  https://github.com/rajatjindal/kubectl-whoami/releases/download/v0.0.35/kubectl-whoami_v0.0.35_linux_amd64.tar.gz
+  if [[ ! -f "$BIN_DIR"/kubectl-whoami ]]; then 
+    pushd "$TMP_DIR" || log error "pushd fail"
+      wget -q https://github.com/rajatjindal/kubectl-whoami/releases/download/v0.0.35/kubectl-whoami_v0.0.35_linux_amd64.tar.gz
+      tar zxf kubectl-whoami_v0.0.35_linux_amd64.tar.gz
+      mv kubectl-whoami "$BIN_DIR"/
+    popd || log error "pushd fail"
+  fi
+
 }
 
 function install_packages(){
