@@ -6,6 +6,10 @@ I often need useful Kubernetes utilties and aliases installed into a node. The `
 
 ## Install
 
+Just run a few commands to install.
+
+![install](/img/example-install.svg)
+
 Run these commands.
 
 ```bash
