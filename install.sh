@@ -158,6 +158,47 @@ function install_binaries(){
     popd || log error "pushd fail"
   fi
 
+  # carvel tools
+  if [[ ! -f "$BIN_DIR"/ytt ]]; then 
+    pushd "$TMP_DIR" || log error "pushd fail"
+      wget -q https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.31.0/ytt-linux-amd64
+      mv ytt-linux-amd64 "$BIN_DIR"/ytt
+      chmod 755 "$BIN_DIR"/ytt
+    popd || log error "pushd fail"
+  fi
+
+  if [[ ! -f "$BIN_DIR"/kbld ]]; then 
+    pushd "$TMP_DIR" || log error "pushd fail"
+      wget -q https://github.com/vmware-tanzu/carvel-kbld/releases/download/v0.29.0/kbld-linux-amd64
+      mv kbld-linux-amd64 "$BIN_DIR"/kbld
+      chmod 755 "$BIN_DIR"/kbld
+    popd || log error "pushd fail"
+  fi
+
+  if [[ ! -f "$BIN_DIR"/kapp ]]; then 
+    pushd "$TMP_DIR" || log error "pushd fail"
+      wget -q https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.36.0/kapp-linux-amd64
+      mv kapp-linux-amd64 "$BIN_DIR"/kapp
+      chmod 755 "$BIN_DIR"/kapp
+    popd || log error "pushd fail"
+  fi
+
+  if [[ ! -f "$BIN_DIR"/imgpkg ]]; then 
+    pushd "$TMP_DIR" || log error "pushd fail"
+      wget -q https://github.com/vmware-tanzu/carvel-imgpkg/releases/download/v0.5.0/imgpkg-linux-amd64
+      mv imgpkg-linux-amd64 "$BIN_DIR"/imgpkg
+      chmod 755 "$BIN_DIR"/imgpkg
+    popd || log error "pushd fail"
+  fi
+
+  if [[ ! -f "$BIN_DIR"/vendir ]]; then 
+    pushd "$TMP_DIR" || log error "pushd fail"
+      wget -q https://github.com/vmware-tanzu/carvel-vendir/releases/download/v0.17.0/vendir-linux-amd64
+      mv vendir-linux-amd64 "$BIN_DIR"/vendir
+      chmod 755 "$BIN_DIR"/vendir
+    popd || log error "pushd fail"
+  fi
+
 }
 
 function install_packages(){

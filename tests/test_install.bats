@@ -89,3 +89,25 @@ load '/opt/bats-assert/load.bash'
   source $HOME/.bashrc
   echo $PATH | grep "\.k8s-dotfiles\/bin"
 }
+
+# carvel tools
+
+@test "ytt should exist in bin dir and be executable" {
+  assert [ -x "$HOME/.k8s-dotfiles/bin/ytt" ]
+}
+
+@test "kbld should exist in bin dir and be executable" {
+  assert [ -x "$HOME/.k8s-dotfiles/bin/kbld" ]
+}
+
+@test "kapp should exist in bin dir and be executable" {
+  assert [ -x "$HOME/.k8s-dotfiles/bin/kapp" ]
+}
+
+@test "imgpkg should exist in bin dir and be executable" {
+  assert [ -x "$HOME/.k8s-dotfiles/bin/imgpkg" ]
+}
+
+@test "vendir should exist in bin dir and be executable" {
+  assert [ -x "$HOME/.k8s-dotfiles/bin/vendir" ]
+}
