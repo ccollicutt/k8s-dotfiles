@@ -111,3 +111,7 @@ load '/opt/bats-assert/load.bash'
 @test "vendir should exist in bin dir and be executable" {
   assert [ -x "$HOME/.k8s-dotfiles/bin/vendir" ]
 }
+
+@test "kubectl-tree should exist in bin dir and be executable" {
+  assert [ -x "$HOME/.k8s-dotfiles/bin/kubectl-tree" ]
+}

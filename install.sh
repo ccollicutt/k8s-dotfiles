@@ -136,13 +136,13 @@ function install_binaries(){
     popd || log error "pushd fail"
   fi
 
-
   if [[ ! -f "$BIN_DIR"/kube-ps1.sh ]]; then 
     pushd "$BIN_DIR" || log error "pushd fail"
       wget -q https://raw.githubusercontent.com/jonmosco/kube-ps1/master/kube-ps1.sh
     popd || log error "pushd fail"
   fi
 
+  # make it easy to import kubeconfigs into your main kubeconfig
   if [[ ! -f "$BIN_DIR"/konfig ]]; then 
     pushd "$BIN_DIR" || log error "pushd fail"
       wget -q https://raw.githubusercontent.com/corneliusweig/konfig/master/konfig
@@ -150,11 +150,22 @@ function install_binaries(){
     popd || log error "pushd fail"
   fi
 
+  # make it really easy to figure out who you are...
   if [[ ! -f "$BIN_DIR"/kubectl-whoami ]]; then 
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/rajatjindal/kubectl-whoami/releases/download/v0.0.35/kubectl-whoami_v0.0.35_linux_amd64.tar.gz
       tar zxf kubectl-whoami_v0.0.35_linux_amd64.tar.gz
       mv kubectl-whoami "$BIN_DIR"/
+    popd || log error "pushd fail"
+  fi
+
+  # dive - look at what is in container images
+  if [[ ! -f "$BIN_DIR"/dive ]]; then 
+    pushd "$TMP_DIR" || log error "pushd fail"
+      wget -q https://github.com/wagoodman/dive/releases/download/v0.10.0/dive_0.10.0_linux_amd64.tar.gz
+      tar zxf dive_0.10.0_linux_amd64.tar.gz
+      mv dive "$BIN_DIR"/
+      chmod 755 "$BIN_DIR"/dive
     popd || log error "pushd fail"
   fi
 
@@ -196,6 +207,16 @@ function install_binaries(){
       wget -q https://github.com/vmware-tanzu/carvel-vendir/releases/download/v0.17.0/vendir-linux-amd64
       mv vendir-linux-amd64 "$BIN_DIR"/vendir
       chmod 755 "$BIN_DIR"/vendir
+    popd || log error "pushd fail"
+  fi
+
+  # kubectl-tree
+  if [[ ! -f "$BIN_DIR"/dive ]]; then 
+    pushd "$TMP_DIR" || log error "pushd fail"
+      wget -q https://github.com/ahmetb/kubectl-tree/releases/download/v0.4.0/kubectl-tree_v0.4.0_linux_amd64.tar.gz
+      tar zxf kubectl-tree_v0.4.0_linux_amd64.tar.gz
+      mv kubectl-tree "$BIN_DIR"/
+      chmod 755 "$BIN_DIR"/kubectl-tree
     popd || log error "pushd fail"
   fi
 
