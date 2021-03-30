@@ -211,7 +211,7 @@ function install_binaries(){
   fi
 
   # kubectl-tree
-  if [[ ! -f "$BIN_DIR"/dive ]]; then 
+  if [[ ! -f "$BIN_DIR"/kubectl-tree ]]; then 
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/ahmetb/kubectl-tree/releases/download/v0.4.0/kubectl-tree_v0.4.0_linux_amd64.tar.gz
       tar zxf kubectl-tree_v0.4.0_linux_amd64.tar.gz
