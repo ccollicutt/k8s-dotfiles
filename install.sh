@@ -211,12 +211,31 @@ function install_binaries(){
   fi
 
   # kubectl-tree
+  log debug "installing kubectl-tree"
   if [[ ! -f "$BIN_DIR"/kubectl-tree ]]; then 
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/ahmetb/kubectl-tree/releases/download/v0.4.0/kubectl-tree_v0.4.0_linux_amd64.tar.gz
       tar zxf kubectl-tree_v0.4.0_linux_amd64.tar.gz
       mv kubectl-tree "$BIN_DIR"/
       chmod 755 "$BIN_DIR"/kubectl-tree
+    popd || log error "pushd fail"
+  fi
+
+  #skaffold
+  if [[ ! -f "$BIN_DIR"/skaffold ]]; then 
+    pushd "$TMP_DIR" || log error "pushd fail"
+      wget -q https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+      mv skaffold-linux-amd64 "$BIN_DIR"/skaffold
+      chmod 755 "$BIN_DIR"/skaffold
+    popd || log error "pushd fail"
+  fi
+
+  # kind
+  if [[ ! -f "$BIN_DIR"/kind ]]; then 
+    pushd "$TMP_DIR" || log error "pushd fail"
+      wget -q https://kind.sigs.k8s.io/dl/v0.10.0/kind-linux-amd64
+      mv kind-linux-amd64 "$BIN_DIR"/kind
+      chmod 755 "$BIN_DIR"/kind
     popd || log error "pushd fail"
   fi
 

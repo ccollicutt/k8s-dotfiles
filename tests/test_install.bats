@@ -115,3 +115,11 @@ load '/opt/bats-assert/load.bash'
 @test "kubectl-tree should exist in bin dir and be executable" {
   assert [ -x "$HOME/.k8s-dotfiles/bin/kubectl-tree" ]
 }
+
+@test "skaffold should exist in bin dir and be executable" {
+  assert [ -x "$HOME/.k8s-dotfiles/bin/skaffold" ]
+}
+
+@test "kind should exist in bin dir and be executable" {
+  assert [ -x "$HOME/.k8s-dotfiles/bin/kind" ]
+}
