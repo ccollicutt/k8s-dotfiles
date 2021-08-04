@@ -296,7 +296,8 @@ readonly SCRIPT_DIR
 readonly DOT_DIR="$HOME/.k8s-dotfiles"
 readonly BIN_DIR="$DOT_DIR/bin"
 # tmpdir
-readonly TMP_DIR=$(mktemp -d -t k8s-dotfiles-XXXXXXXXXX)
+TMP_DIR=$(mktemp -d -t k8s-dotfiles-XXXXXXXXXX)
+readonly TMP_DIR
 SKIP_OS_CHECK=false
 
 while getopts ":hs" opt; do
