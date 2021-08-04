@@ -172,7 +172,7 @@ function install_binaries(){
   # carvel tools
   if [[ ! -f "$BIN_DIR"/ytt ]]; then 
     pushd "$TMP_DIR" || log error "pushd fail"
-      wget -q https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.31.0/ytt-linux-amd64
+      wget -q https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.35.1/ytt-linux-amd64
       mv ytt-linux-amd64 "$BIN_DIR"/ytt
       chmod 755 "$BIN_DIR"/ytt
     popd || log error "pushd fail"
@@ -180,7 +180,7 @@ function install_binaries(){
 
   if [[ ! -f "$BIN_DIR"/kbld ]]; then 
     pushd "$TMP_DIR" || log error "pushd fail"
-      wget -q https://github.com/vmware-tanzu/carvel-kbld/releases/download/v0.29.0/kbld-linux-amd64
+      wget -q https://github.com/vmware-tanzu/carvel-kbld/releases/download/v0.30.0/kbld-linux-amd64
       mv kbld-linux-amd64 "$BIN_DIR"/kbld
       chmod 755 "$BIN_DIR"/kbld
     popd || log error "pushd fail"
@@ -188,7 +188,7 @@ function install_binaries(){
 
   if [[ ! -f "$BIN_DIR"/kapp ]]; then 
     pushd "$TMP_DIR" || log error "pushd fail"
-      wget -q https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.36.0/kapp-linux-amd64
+      wget -q https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.37.0/kapp-linux-amd64
       mv kapp-linux-amd64 "$BIN_DIR"/kapp
       chmod 755 "$BIN_DIR"/kapp
     popd || log error "pushd fail"
@@ -196,7 +196,7 @@ function install_binaries(){
 
   if [[ ! -f "$BIN_DIR"/imgpkg ]]; then 
     pushd "$TMP_DIR" || log error "pushd fail"
-      wget -q https://github.com/vmware-tanzu/carvel-imgpkg/releases/download/v0.5.0/imgpkg-linux-amd64
+      wget -q https://github.com/vmware-tanzu/carvel-imgpkg/releases/download/v0.17.0/imgpkg-linux-amd64
       mv imgpkg-linux-amd64 "$BIN_DIR"/imgpkg
       chmod 755 "$BIN_DIR"/imgpkg
     popd || log error "pushd fail"
@@ -204,7 +204,7 @@ function install_binaries(){
 
   if [[ ! -f "$BIN_DIR"/vendir ]]; then 
     pushd "$TMP_DIR" || log error "pushd fail"
-      wget -q https://github.com/vmware-tanzu/carvel-vendir/releases/download/v0.17.0/vendir-linux-amd64
+      wget -q https://github.com/vmware-tanzu/carvel-vendir/releases/download/v0.21.1/vendir-linux-amd64
       mv vendir-linux-amd64 "$BIN_DIR"/vendir
       chmod 755 "$BIN_DIR"/vendir
     popd || log error "pushd fail"
