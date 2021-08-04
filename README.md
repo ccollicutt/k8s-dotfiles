@@ -25,6 +25,22 @@ At this point your shell should be configured by `k8s-dotfiles` and you can remo
 rm -rf k8s-dotfiles
 ```
 
+## Upgrade
+
+Backup your existing .k8sdotfiles if you want (though nothing is permanent):
+
+```
+mv ~/.k8s-dotfiles/ ~/.k8s-dotfiles.bak
+```
+
+And run the install.
+
+If you're happy, remove the backup.
+
+```
+rm -rf ~/.k8s-dotfiles.bak
+```
+
 ## Run from Docker
 
 Build the image:
@@ -46,10 +62,3 @@ rm -rf ~/.k8s-dotfiles
 ## Testing
 
 See [testing readme](tests/README.md).
-
-## TODO
-
-* Self updating
-* version script
-* version ps1 download
-* don't use raw github for deploying (300 second update)
