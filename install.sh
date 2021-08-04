@@ -291,7 +291,8 @@ run_main() {
 # vars 
 # 
 
-readonly SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+readonly SCRIPT_DIR
 readonly DOT_DIR="$HOME/.k8s-dotfiles"
 readonly BIN_DIR="$DOT_DIR/bin"
 # tmpdir
