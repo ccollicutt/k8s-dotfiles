@@ -29,7 +29,7 @@ rm -rf k8s-dotfiles
 
 Backup your existing .k8sdotfiles if you want (though nothing is permanent):
 
-```
+```bash
 mv ~/.k8s-dotfiles/ ~/.k8s-dotfiles.bak
 ```
 
@@ -37,7 +37,7 @@ And run the install.
 
 If you're happy, remove the backup.
 
-```
+```bash
 rm -rf ~/.k8s-dotfiles.bak
 ```
 
