@@ -233,7 +233,7 @@ function install_binaries(){
   # kind
   if [[ ! -f "$BIN_DIR"/kind ]]; then 
     pushd "$TMP_DIR" || log error "pushd fail"
-      wget -q https://kind.sigs.k8s.io/dl/v0.10.0/kind-linux-amd64
+      wget -q https://github.com/kubernetes-sigs/kind/releases/download/v0.11.1/kind-linux-amd64
       mv kind-linux-amd64 "$BIN_DIR"/kind
       chmod 755 "$BIN_DIR"/kind
     popd || log error "pushd fail"
