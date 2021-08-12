@@ -123,3 +123,7 @@ load '/opt/bats-assert/load.bash'
 @test "kind should exist in bin dir and be executable" {
   assert [ -x "$HOME/.k8s-dotfiles/bin/kind" ]
 }
+
+@test "bat should exist in bin dir and be executable" {
+  assert [ -x "$HOME/.k8s-dotfiles/bin/bat" ]
+}

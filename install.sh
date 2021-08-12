@@ -239,6 +239,16 @@ function install_binaries(){
     popd || log error "pushd fail"
   fi
 
+  # bat - better cat
+  if [[ ! -f "$BIN_DIR"/bat ]]; then 
+    pushd "$TMP_DIR" || log error "pushd fail"
+      wget -q https://github.com/sharkdp/bat/releases/download/v0.18.2/bat-v0.18.2-x86_64-unknown-linux-gnu.tar.gz
+      tar zxf bat-v0.18.2-x86_64-unknown-linux-gnu.tar.gz
+      mv bat-v0.18.2-x86_64-unknown-linux-gnu/bat "$BIN_DIR"/bat
+      chmod 755 "$BIN_DIR"/bat
+    popd || log error "pushd fail"
+  fi
+
 }
 
 function install_packages(){
