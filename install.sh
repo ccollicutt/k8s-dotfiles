@@ -267,6 +267,16 @@ function install_binaries(){
     popd || log error "pushd fail"
   fi
  
+  # github cli gh
+  log debug "installing github CLI gh"
+  if [[ ! -f "$BIN_DIR"/gh ]]; then 
+    pushd "$TMP_DIR" || log error "pushd fail"
+      wget -q https://github.com/cli/cli/releases/download/v2.0.0/gh_2.0.0_linux_amd64.tar.gz
+      tar zxf gh_2.0.0_linux_amd64.tar.gz
+      mv gh_2.0.0_linux_amd64/bin/gh "$BIN_DIR"/gh
+      chmod 755 "$BIN_DIR"/kubectl-tree
+    popd || log error "pushd fail"
+  fi
 
 }
 

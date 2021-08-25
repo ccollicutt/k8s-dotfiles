@@ -135,3 +135,7 @@ load '/opt/bats-assert/load.bash'
 @test "mkcert should exist in bin dir and be executable" {
   assert [ -x "$HOME/.k8s-dotfiles/bin/mkcert" ]
 }
+
+@test "gh should exist in bin dir and be executable" {
+  assert [ -x "$HOME/.k8s-dotfiles/bin/gh" ]
+}
