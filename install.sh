@@ -250,7 +250,7 @@ function install_binaries(){
   fi
 
   # yq
-  if [[ ! -f "$BIN_DIR"/y ]]; then 
+  if [[ ! -f "$BIN_DIR"/yq ]]; then 
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/mikefarah/yq/releases/download/v4.12.0/yq_linux_amd64
       mv yq_linux_amd64 "$BIN_DIR"/yq
@@ -258,6 +258,15 @@ function install_binaries(){
     popd || log error "pushd fail"
   fi
   
+  # mkcert best ever
+  if [[ ! -f "$BIN_DIR"/mkcert ]]; then 
+    pushd "$TMP_DIR" || log error "pushd fail"
+      wget -q  https://github.com/FiloSottile/mkcert/releases/download/v1.4.3/mkcert-v1.4.3-linux-amd64
+      mv mkcert-v1.4.3-linux-amd64 "$BIN_DIR"/mkcert
+      chmod 755 "$BIN_DIR"/mkcert
+    popd || log error "pushd fail"
+  fi
+ 
 
 }
 
