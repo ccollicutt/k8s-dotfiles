@@ -250,7 +250,7 @@ function install_binaries(){
   fi
 
   # yq
-  if [[ ! -f "$BIN_DIR"/kind ]]; then 
+  if [[ ! -f "$BIN_DIR"/y ]]; then 
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/mikefarah/yq/releases/download/v4.12.0/yq_linux_amd64
       mv yq_linux_amd64 "$BIN_DIR"/yq
