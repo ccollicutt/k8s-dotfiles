@@ -127,3 +127,7 @@ load '/opt/bats-assert/load.bash'
 @test "bat should exist in bin dir and be executable" {
   assert [ -x "$HOME/.k8s-dotfiles/bin/bat" ]
 }
+
+@test "yq should exist in bin dir and be executable" {
+  assert [ -x "$HOME/.k8s-dotfiles/bin/yq" ]
+}
