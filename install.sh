@@ -358,6 +358,7 @@ readonly BIN_DIR="$DOT_DIR/bin"
 TMP_DIR=$(mktemp -d -t k8s-dotfiles-XXXXXXXXXX)
 readonly TMP_DIR
 SKIP_OS_CHECK=false
+DEBUG=false
 
 while getopts ":hs" opt; do
   case ${opt} in
