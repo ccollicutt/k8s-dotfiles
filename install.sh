@@ -80,15 +80,16 @@ function install_k8sdotfile(){
 
 # install useful binaries, like helm, into the $BIN_DIR
 function install_binaries(){
-
-  if [[ ! -f "$BIN_DIR"/powerline-go ]]; then 
+  if [[ ! -f "$BIN_DIR"/kubectl ]]; then
+    log debug "installing kubectl"
     pushd "$BIN_DIR" || log error "pushd fail"
       wget -q "https://dl.k8s.io/release/v1.20.4/bin/linux/amd64/kubectl"
       chmod 755 kubectl
     popd || log error "pushd fail"
   fi
 
-  if [[ ! -f "$BIN_DIR"/kubectx ]]; then 
+  if [[ ! -f "$BIN_DIR"/kubectx ]]; then
+    log debug "installing kubectx" 
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubectx_v0.9.3_linux_x86_64.tar.gz
       tar zxf kubectx_v0.9.3_linux_x86_64.tar.gz
@@ -96,7 +97,8 @@ function install_binaries(){
     popd || log error "pushd fail"
   fi 
 
-  if [[ ! -f "$BIN_DIR"/kubens ]]; then 
+  if [[ ! -f "$BIN_DIR"/kubens ]]; then
+    log debug "installing kubens"
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubens_v0.9.3_linux_x86_64.tar.gz
       tar zxf kubens_v0.9.3_linux_x86_64.tar.gz
@@ -105,13 +107,15 @@ function install_binaries(){
   fi 
 
   # install z
-  if [[ ! -f "$BIN_DIR"/z.sh ]]; then 
+  if [[ ! -f "$BIN_DIR"/z.sh ]]; then
+    log debug "installing z.sh"
     pushd "$BIN_DIR" || log error "pushd fail"
       wget -q https://raw.githubusercontent.com/rupa/z/master/z.sh
     popd || log error "pushd fail"
   fi
 
   if [[ ! -f "$BIN_DIR"/helm ]]; then 
+    log debug "installing helm"
     pushd "$TMP_DIR" || log error "pushd fail"
       HELM_FILE=helm-v3.5.3-linux-amd64.tar.gz
       wget -q "https://get.helm.sh/$HELM_FILE"
@@ -120,7 +124,8 @@ function install_binaries(){
     popd || log error "pushd fail"
   fi
 
-  if [[ ! -f "$BIN_DIR"/kustomize ]]; then 
+  if [[ ! -f "$BIN_DIR"/kustomize ]]; then
+    log debug "installing kustomize" 
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv4.0.5/kustomize_v4.0.5_linux_amd64.tar.gz
       tar zxf kustomize_v4.0.5_linux_amd64.tar.gz
@@ -128,7 +133,8 @@ function install_binaries(){
     popd || log error "pushd fail"
   fi
 
-  if [[ ! -f "$BIN_DIR"/powerline-go ]]; then 
+  if [[ ! -f "$BIN_DIR"/powerline-go ]]; then
+    log debug "installing powerline-go" 
     pushd "$BIN_DIR" || log error "pushd fail"
       wget -q https://github.com/justjanne/powerline-go/releases/download/v1.21.0/powerline-go-linux-amd64 \
         -O powerline-go
@@ -137,6 +143,7 @@ function install_binaries(){
   fi
 
   if [[ ! -f "$BIN_DIR"/kube-ps1.sh ]]; then 
+    log debug "installing kube-ps1.sh"
     pushd "$BIN_DIR" || log error "pushd fail"
       wget -q https://raw.githubusercontent.com/jonmosco/kube-ps1/master/kube-ps1.sh
     popd || log error "pushd fail"
@@ -144,6 +151,7 @@ function install_binaries(){
 
   # make it easy to import kubeconfigs into your main kubeconfig
   if [[ ! -f "$BIN_DIR"/konfig ]]; then 
+    log debug "installing konfig"
     pushd "$BIN_DIR" || log error "pushd fail"
       wget -q https://raw.githubusercontent.com/corneliusweig/konfig/master/konfig
       chmod 755 konfig
@@ -152,6 +160,7 @@ function install_binaries(){
 
   # make it really easy to figure out who you are...
   if [[ ! -f "$BIN_DIR"/kubectl-whoami ]]; then 
+    log debug "installing kubectl-whoami"
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/rajatjindal/kubectl-whoami/releases/download/v0.0.35/kubectl-whoami_v0.0.35_linux_amd64.tar.gz
       tar zxf kubectl-whoami_v0.0.35_linux_amd64.tar.gz
@@ -161,6 +170,7 @@ function install_binaries(){
 
   # dive - look at what is in container images
   if [[ ! -f "$BIN_DIR"/dive ]]; then 
+    log debug "installing dive"
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/wagoodman/dive/releases/download/v0.10.0/dive_0.10.0_linux_amd64.tar.gz
       tar zxf dive_0.10.0_linux_amd64.tar.gz
@@ -170,7 +180,8 @@ function install_binaries(){
   fi
 
   # carvel tools
-  if [[ ! -f "$BIN_DIR"/ytt ]]; then 
+  if [[ ! -f "$BIN_DIR"/ytt ]]; then
+    log debug "installing ytt"
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.35.1/ytt-linux-amd64
       mv ytt-linux-amd64 "$BIN_DIR"/ytt
@@ -179,6 +190,7 @@ function install_binaries(){
   fi
 
   if [[ ! -f "$BIN_DIR"/kbld ]]; then 
+    log debug "installing carvel kbld"
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/vmware-tanzu/carvel-kbld/releases/download/v0.30.0/kbld-linux-amd64
       mv kbld-linux-amd64 "$BIN_DIR"/kbld
@@ -187,6 +199,7 @@ function install_binaries(){
   fi
 
   if [[ ! -f "$BIN_DIR"/kapp ]]; then 
+    log debug "installing carvel kapp"
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.37.0/kapp-linux-amd64
       mv kapp-linux-amd64 "$BIN_DIR"/kapp
@@ -195,6 +208,7 @@ function install_binaries(){
   fi
 
   if [[ ! -f "$BIN_DIR"/imgpkg ]]; then 
+    log debug "installing carvel imgpkg"
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/vmware-tanzu/carvel-imgpkg/releases/download/v0.17.0/imgpkg-linux-amd64
       mv imgpkg-linux-amd64 "$BIN_DIR"/imgpkg
@@ -203,6 +217,7 @@ function install_binaries(){
   fi
 
   if [[ ! -f "$BIN_DIR"/vendir ]]; then 
+    log debug "installing carvel vendir"
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/vmware-tanzu/carvel-vendir/releases/download/v0.21.1/vendir-linux-amd64
       mv vendir-linux-amd64 "$BIN_DIR"/vendir
@@ -211,8 +226,8 @@ function install_binaries(){
   fi
 
   # kubectl-tree
-  log debug "installing kubectl-tree"
   if [[ ! -f "$BIN_DIR"/kubectl-tree ]]; then 
+    log debug "installing kubectl-tree"
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/ahmetb/kubectl-tree/releases/download/v0.4.0/kubectl-tree_v0.4.0_linux_amd64.tar.gz
       tar zxf kubectl-tree_v0.4.0_linux_amd64.tar.gz
@@ -223,6 +238,7 @@ function install_binaries(){
 
   #skaffold
   if [[ ! -f "$BIN_DIR"/skaffold ]]; then 
+    log debug "installing skaffold"
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
       mv skaffold-linux-amd64 "$BIN_DIR"/skaffold
@@ -231,7 +247,8 @@ function install_binaries(){
   fi
 
   # kind
-  if [[ ! -f "$BIN_DIR"/kind ]]; then 
+  if [[ ! -f "$BIN_DIR"/kind ]]; then
+    log debug "installing kind"
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/kubernetes-sigs/kind/releases/download/v0.11.1/kind-linux-amd64
       mv kind-linux-amd64 "$BIN_DIR"/kind
@@ -240,7 +257,8 @@ function install_binaries(){
   fi
 
   # bat - better cat
-  if [[ ! -f "$BIN_DIR"/bat ]]; then 
+  if [[ ! -f "$BIN_DIR"/bat ]]; then
+    log debug "installing bat"
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/sharkdp/bat/releases/download/v0.18.2/bat-v0.18.2-x86_64-unknown-linux-gnu.tar.gz
       tar zxf bat-v0.18.2-x86_64-unknown-linux-gnu.tar.gz
@@ -250,7 +268,8 @@ function install_binaries(){
   fi
 
   # yq
-  if [[ ! -f "$BIN_DIR"/yq ]]; then 
+  if [[ ! -f "$BIN_DIR"/yq ]]; then
+    log debug "installing yq"
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q https://github.com/mikefarah/yq/releases/download/v4.12.0/yq_linux_amd64
       mv yq_linux_amd64 "$BIN_DIR"/yq
@@ -260,6 +279,7 @@ function install_binaries(){
   
   # mkcert best ever
   if [[ ! -f "$BIN_DIR"/mkcert ]]; then 
+    log debug "installing mkcert"
     pushd "$TMP_DIR" || log error "pushd fail"
       wget -q  https://github.com/FiloSottile/mkcert/releases/download/v1.4.3/mkcert-v1.4.3-linux-amd64
       mv mkcert-v1.4.3-linux-amd64 "$BIN_DIR"/mkcert
@@ -268,9 +288,9 @@ function install_binaries(){
   fi
  
   # github cli gh
-  log debug "installing github CLI gh"
   if [[ ! -f "$BIN_DIR"/gh ]]; then 
     pushd "$TMP_DIR" || log error "pushd fail"
+      log debug "installing github CLI gh"
       wget -q https://github.com/cli/cli/releases/download/v2.0.0/gh_2.0.0_linux_amd64.tar.gz
       tar zxf gh_2.0.0_linux_amd64.tar.gz
       mv gh_2.0.0_linux_amd64/bin/gh "$BIN_DIR"/gh
@@ -346,6 +366,9 @@ while getopts ":hs" opt; do
       ;;
     s ) SKIP_OS_CHECK=true
         log info "skipping os checks"
+      ;;
+    v ) DEBUG=true
+        log info "setting debug to true"
       ;;
     \? ) log error "invalid option"
         exit 1
