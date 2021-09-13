@@ -360,7 +360,7 @@ readonly TMP_DIR
 SKIP_OS_CHECK=false
 DEBUG=false
 
-while getopts ":hs" opt; do
+while getopts ":hvs" opt; do
   case ${opt} in
     h ) echo "install.sh [-h for help] [-s skip OS check]"
         exit 0
