@@ -99,9 +99,12 @@ alias ll='vi ls -rt | tail -1'
 alias kga='k get pod --all-namespaces'
 alias kgaa='kubectl get all --show-labels'
 
+# Allow kubectl completion to use alias
+complete -F __start_kubectl k
 
 ###################################################
 # kubectl completion
+# NOTE: added by kubectl completion bash >>
 ###################################################
 
 # Copyright 2016 The Kubernetes Authors.
