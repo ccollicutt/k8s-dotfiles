@@ -306,6 +306,16 @@ function install_binaries(){
       chmod 755 "$BIN_DIR"/pivnet
     popd || log error "pushd fail"
   fi
+  
+  if [[ ! -f "$BIN_DIR"/pack ]]; then 
+    pushd "$TMP_DIR" || log error "pushd fail"
+      log debug "installing pack"
+      wget -q https://github.com/buildpacks/pack/releases/download/v0.21.0/pack-v0.21.0-linux.tgz 
+      tar zvf pack-v0.21.0-linux.tgz
+      mv pack "$BIN_DIR"/pack
+      chmod 755 "$BIN_DIR"/pack
+    popd || log error "pushd fail"
+  fi
 
 }
 
