@@ -323,12 +323,16 @@ function install_packages(){
   if ! dpkg -l fonts-powerline > /dev/null; then
     if [[ $EUID -ne 0 ]]; then
       # user is not root, use sudo
-      sudo apt update
-      sudo apt install -y fonts-powerline
+      log info "running apt update"
+      sudo apt update -qq -o=Dpkg::Use-Pty=0
+      log info "installing powerline-go fonts"
+      sudo apt-get install -qq -o=Dpkg::Use-Pty=0 fonts-powerline -y
     else
       # user is root
-      apt update
-      apt install -y fonts-powerline
+      log info "running apt update"
+      apt update -qq -o=Dpkg::Use-Pty=0
+      log info "installing powerline-go fonts"
+      apt-get install -qq -o=Dpkg::Use-Pty=0 fonts-powerline -y
     fi
   fi
 }
