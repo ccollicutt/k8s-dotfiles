@@ -320,19 +320,22 @@ function install_binaries(){
 }
 
 function install_packages(){
+
+  local PACKAGES="fonts-powerline httpie"
+
   if ! dpkg -l fonts-powerline > /dev/null; then
     if [[ $EUID -ne 0 ]]; then
       # user is not root, use sudo
       log info "running apt update"
       sudo apt update -qq -o=Dpkg::Use-Pty=0
-      log info "installing powerline-go fonts"
-      sudo apt-get install -qq -o=Dpkg::Use-Pty=0 fonts-powerline -y
+      log info "installing ${PACKAGES}"
+      sudo apt-get install -qq -o=Dpkg::Use-Pty=0 ${PACKAGES} -y
     else
       # user is root
       log info "running apt update"
       apt update -qq -o=Dpkg::Use-Pty=0
-      log info "installing powerline-go fonts"
-      apt-get install -qq -o=Dpkg::Use-Pty=0 fonts-powerline -y
+      log info "installing ${PACKAGES}"
+      apt-get install -qq -o=Dpkg::Use-Pty=0 ${PACKAGES} -y
     fi
   fi
 }
