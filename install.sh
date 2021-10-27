@@ -329,13 +329,13 @@ function install_packages(){
       log info "running apt update"
       sudo apt update -qq -o=Dpkg::Use-Pty=0
       log info "installing ${PACKAGES}"
-      sudo apt-get install -qq -o=Dpkg::Use-Pty=0 ${PACKAGES} -y
+      sudo apt-get install -qq -o=Dpkg::Use-Pty=0 "${PACKAGES}" -y
     else
       # user is root
       log info "running apt update"
       apt update -qq -o=Dpkg::Use-Pty=0
       log info "installing ${PACKAGES}"
-      apt-get install -qq -o=Dpkg::Use-Pty=0 ${PACKAGES} -y
+      apt-get install -qq -o=Dpkg::Use-Pty=0 "${PACKAGES}" -y
     fi
   fi
 }
