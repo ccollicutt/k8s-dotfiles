@@ -147,3 +147,7 @@ load '/opt/bats-assert/load.bash'
 @test "gh should exist in bin dir and be executable" {
   assert [ -x "$HOME/.k8s-dotfiles/bin/gh" ]
 }
+
+@test "octant should exist in bin dir and be executable" {
+  assert [ -x "$HOME/.k8s-dotfiles/bin/octant" ]
+}
