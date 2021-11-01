@@ -321,7 +321,7 @@ function install_binaries(){
     pushd "$TMP_DIR" || log error "pushd fail"
       log debug "installing octant"
       wget -q https://github.com/vmware-tanzu/octant/releases/download/v0.24.0/octant_0.24.0_Linux-64bit.tar.gz 
-      tar octant_0.24.0_Linux-64bit.tar.gz
+      tar zxf octant_0.24.0_Linux-64bit.tar.gz
       mv octant_0.24.0_Linux-64bit/octant "$BIN_DIR"/octant
       chmod 755 "$BIN_DIR"/octant
     popd || log error "pushd fail"
