@@ -102,6 +102,12 @@ alias kgaa='kubectl get all --show-labels'
 # Allow kubectl completion to use alias
 complete -F __start_kubectl k
 
+
+# import kubetail.bash
+source ${BIN_DIR}/kubetail.bash
+
+
+
 ###################################################
 # kubectl completion
 # NOTE: added by kubectl completion bash >>

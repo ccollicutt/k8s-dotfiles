@@ -327,6 +327,19 @@ function install_binaries(){
     popd || log error "pushd fail"
   fi
 
+  # kubetail bash
+  if [[ ! -f "$BIN_DIR"/kubetail ]]; then 
+    pushd "$TMP_DIR" || log error "pushd fail"
+      log debug "installing kubetail"
+      wget -q https://github.com/johanhaleby/kubetail/archive/refs/tags/1.6.13.tar.gz
+      tar zxf 1.6.13.tar.gz
+      cp kubetail-1.6.13/kubetail "$BIN_DIR"/kubetail
+      cp kubetail-1.6.13/completion/kubetail.bash  "$BIN_DIR"/kubetail.bash
+
+      chmod 755 "$BIN_DIR"/kubetail
+    popd || log error "pushd fail"
+  fi
+
 }
 
 function install_packages(){
