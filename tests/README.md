@@ -38,4 +38,4 @@ ok 12 check if powerline-go exists and is executable
 * Self updating
 * version script
 * version ps1 download
-* don't use raw github for deploying (300 second update)
+* don't use raw GitHub for deploying (300 second update)

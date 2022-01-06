@@ -38,7 +38,7 @@ load '/opt/bats-assert/load.bash'
 }
 
 @test "k8sdotfilesrc should be sourced in users .bashrc" {
-  run grep k8sdotfilesrc $HOME/.bashrc 
+  run grep k8sdotfilesrc "$HOME"/.bashrc 
   assert_success
 }
 
