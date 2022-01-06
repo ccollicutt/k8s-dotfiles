@@ -159,3 +159,7 @@ load '/opt/bats-assert/load.bash'
 @test "kubetail.bash should exist in bin dir" {
   assert [ -e "$HOME/.k8s-dotfiles/bin/kubetail.bash" ]
 }
+
+@test "kubetail should exist in bin dir and be executable" {
+  assert [ -x "$HOME/.k8s-dotfiles/bin/kp" ]
+}

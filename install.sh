@@ -340,6 +340,15 @@ function install_binaries(){
     popd || log error "pushd fail"
   fi
 
+  if [[ ! -f "$BIN_DIR"/kp ]]; then
+    pushd "$TMP_DIR" || log error "pushd fail"
+      log debug "installing kp"
+      wget -q https://github.com/vmware-tanzu/kpack-cli/releases/download/v0.4.2/kp-linux-0.4.2
+      mv kp-linux-0.4.2 "$BIN_DIR"/kp
+      chmod 755 "$BIN_DIR"/kp
+    popd || log error "pushd fail"
+  fi
+
 }
 
 function install_packages(){
