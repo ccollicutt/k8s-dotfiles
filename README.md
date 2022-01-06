@@ -2,7 +2,7 @@
 
 [![Run Bats tests](https://github.com/ccollicutt/k8s-dotfiles/actions/workflows/run.yaml/badge.svg)](https://github.com/ccollicutt/k8s-dotfiles/actions/workflows/run.yaml) [![Super-Linter](https://github.com/ccollicutt/k8s-dotfiles/actions/workflows/superlinter.yaml/badge.svg)](https://github.com/ccollicutt/k8s-dotfiles/actions/workflows/superlinter.yaml)
 
-I often need useful Kubernetes utilties and aliases installed into a node. The `install.sh` script will setup some commands, scripts, and a PS1 via `~/.k8s-dotfiles/`. Sourcing the rc file will be added to `~/.bashrc`. Note that this will reset your shell prompt.
+I often need useful Kubernetes utilties and aliases installed into a Linux instance. The `install.sh` script will setup some commands, scripts, and a PS1 via `~/.k8s-dotfiles/`. Sourcing the rc file will be added to `~/.bashrc`. Note that this will reset your shell prompt.
 
 ## Install
 
