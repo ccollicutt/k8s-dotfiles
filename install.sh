@@ -353,7 +353,7 @@ function install_binaries(){
     pushd "$TMP_DIR" || log error "pushd fail"
       log debug "installing minikube"
       wget -q https://github.com/kubernetes/minikube/releases/download/v1.25.2/minikube-linux-amd64
-      mv minikube-darwin-amd64 "$BIN_DIR"/minikube
+      mv minikube-linux-amd64 "$BIN_DIR"/minikube
       chmod 755 "$BIN_DIR"/minikube
     popd || log error "pushd fail"
   fi
