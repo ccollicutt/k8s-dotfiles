@@ -183,7 +183,7 @@ function install_binaries(){
   if [[ ! -f "$BIN_DIR"/ytt ]]; then
     log debug "installing ytt"
     pushd "$TMP_DIR" || log error "pushd fail"
-      wget -q https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.40.1/ytt-darwin-amd64
+      wget -q https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.40.1/ytt-linux-amd64
       mv ytt-linux-amd64 "$BIN_DIR"/ytt
       chmod 755 "$BIN_DIR"/ytt
     popd || log error "pushd fail"
