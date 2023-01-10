@@ -117,7 +117,7 @@ function install_binaries(){
   if [[ ! -f "$BIN_DIR"/helm ]]; then 
     log debug "installing helm"
     pushd "$TMP_DIR" || log error "pushd fail"
-      HELM_FILE=helm-v3.5.3-linux-amd64.tar.gz
+      HELM_FILE=helm-v3.10.3-linux-amd64.tar.gz
       wget -q "https://get.helm.sh/$HELM_FILE"
       tar zxf "$HELM_FILE"
       mv linux-amd64/helm "$BIN_DIR"/
