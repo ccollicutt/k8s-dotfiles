@@ -10,8 +10,8 @@ jobs:
         - 'debian:latest'
         - 'ubuntu:18.04'
         - 'ubuntu:20.04'
+        - 'ubuntu:22.04'
         - 'centos:latest'
-
     name: Run bats tests
     runs-on: ubuntu-latest
     container: ${{ matrix.container }}
