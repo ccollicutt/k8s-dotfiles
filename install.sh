@@ -83,7 +83,7 @@ function install_binaries(){
   if [[ ! -f "$BIN_DIR"/kubectl ]]; then
     log debug "installing kubectl"
     pushd "$BIN_DIR" || log error "pushd fail"
-      wget -q "https://dl.k8s.io/release/v1.26.4/bin/linux/amd64/kubectl"
+      wget -q "https://dl.k8s.io/release/v1.26.2/bin/linux/amd64/kubectl"
       chmod 755 kubectl
     popd || log error "pushd fail"
   fi
