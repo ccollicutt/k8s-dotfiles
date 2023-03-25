@@ -33,11 +33,11 @@ function check_os_version(){
 
   # by default will be false, but script has option to skip
   if ! command -v lsb_release &> /dev/null; then
-    log error "lsb_release not found, please install it or use ubuntu bionic or focal"
+    log error "lsb_release not found, please install it or use ubuntu bionic, focal, or jammy"
     exit 1
   fi
   OS_VERSION=$(lsb_release -c -s | tr -d '\n')
-  if [[ "$OS_VERSION" != "focal" && "$OS_VERSION" != "bionic" ]]; then
+  if [[ "$OS_VERSION" != "focal" && "$OS_VERSION" != "bionic" && "$OS_VERSION" != "jammy" ]]; then
     log error "only tested on ubuntu bionic and focal"
     exit 1
   fi
