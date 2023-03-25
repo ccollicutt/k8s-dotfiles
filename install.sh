@@ -83,7 +83,7 @@ function install_binaries(){
   if [[ ! -f "$BIN_DIR"/kubectl ]]; then
     log debug "installing kubectl"
     pushd "$BIN_DIR" || log error "pushd fail"
-      wget -q "https://dl.k8s.io/release/v1.20.4/bin/linux/amd64/kubectl"
+      wget -q "https://dl.k8s.io/release/v1.26.4/bin/linux/amd64/kubectl"
       chmod 755 kubectl
     popd || log error "pushd fail"
   fi
@@ -91,8 +91,8 @@ function install_binaries(){
   if [[ ! -f "$BIN_DIR"/kubectx ]]; then
     log debug "installing kubectx" 
     pushd "$TMP_DIR" || log error "pushd fail"
-      wget -q https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubectx_v0.9.3_linux_x86_64.tar.gz
-      tar zxf kubectx_v0.9.3_linux_x86_64.tar.gz
+      wget -q https://github.com/ahmetb/kubectx/releases/download/v0.9.4/kubectx_v0.9.4_linux_x86_64.tar.gz
+      tar zxf kubectx_v0.9.4_linux_x86_64.tar.gz
       mv kubectx "$BIN_DIR"/
     popd || log error "pushd fail"
   fi 
@@ -100,8 +100,8 @@ function install_binaries(){
   if [[ ! -f "$BIN_DIR"/kubens ]]; then
     log debug "installing kubens"
     pushd "$TMP_DIR" || log error "pushd fail"
-      wget -q https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubens_v0.9.3_linux_x86_64.tar.gz
-      tar zxf kubens_v0.9.3_linux_x86_64.tar.gz
+      wget -q https://github.com/ahmetb/kubectx/releases/download/v0.9.4/kubens_v0.9.4_linux_x86_64.tar.gz
+      tar zxf kubens_v0.9.4_linux_x86_64.tar.gz
       mv kubens "$BIN_DIR"/
     popd || log error "pushd fail"
   fi 
