@@ -360,6 +360,7 @@ function install_binaries(){
 
 }
 
+# shellcheck disable=SC2086
 function install_packages(){
 
   local PACKAGES="fonts-powerline httpie"
