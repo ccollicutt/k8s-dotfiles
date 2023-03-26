@@ -136,10 +136,6 @@ load '/opt/bats-assert/load.bash'
   assert [ -x "$HOME/.k8s-dotfiles/bin/mkcert" ]
 }
 
-@test "pivnet should exist in bin dir and be executable" {
-  assert [ -x "$HOME/.k8s-dotfiles/bin/pivnet" ]
-}
-
 @test "pack should exist in bin dir and be executable" {
   assert [ -x "$HOME/.k8s-dotfiles/bin/pack" ]
 }
