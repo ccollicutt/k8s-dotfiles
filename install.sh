@@ -297,15 +297,6 @@ function install_binaries(){
       chmod 755 "$BIN_DIR"/kubectl-tree
     popd || log error "pushd fail"
   fi
-
-  if [[ ! -f "$BIN_DIR"/pivnet ]]; then 
-    pushd "$TMP_DIR" || log error "pushd fail"
-      log debug "installing pivnet"
-      wget -q   https://github.com/pivotal-cf/pivnet-cli/releases/download/v3.0.1/pivnet-linux-amd64-3.0.1
-      mv pivnet-linux-amd64-3.0.1 "$BIN_DIR"/pivnet
-      chmod 755 "$BIN_DIR"/pivnet
-    popd || log error "pushd fail"
-  fi
   
   if [[ ! -f "$BIN_DIR"/pack ]]; then 
     pushd "$TMP_DIR" || log error "pushd fail"
