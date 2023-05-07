@@ -340,12 +340,24 @@ function install_binaries(){
     popd || log error "pushd fail"
   fi
 
-    if [[ ! -f "$BIN_DIR"/minikube ]]; then
+  # minikube
+  if [[ ! -f "$BIN_DIR"/minikube ]]; then
     pushd "$TMP_DIR" || log error "pushd fail"
       log debug "installing minikube"
       wget -q https://github.com/kubernetes/minikube/releases/download/v1.25.2/minikube-linux-amd64
       mv minikube-linux-amd64 "$BIN_DIR"/minikube
       chmod 755 "$BIN_DIR"/minikube
+    popd || log error "pushd fail"
+  fi
+
+  # k8sgpt
+  if [[ ! -f "$BIN_DIR"/k8sgpt ]]; then
+    pushd "$TMP_DIR" || log error "pushd fail"
+      log debug "installing k8sgpt"
+      wget -q https://github.com/k8sgpt-ai/k8sgpt/releases/download/v0.2.9/k8sgpt_Linux_x86_64.tar.gz
+      tar zxf k8sgpt_Linux_x86_64.tar.gz
+      mv k8sgpt "$BIN_DIR"/k8sgpt
+      chmod 755 "$BIN_DIR"/k8sgpt
     popd || log error "pushd fail"
   fi
 
