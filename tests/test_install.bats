@@ -164,6 +164,6 @@ load '/opt/bats-assert/load.bash'
   assert [ -x "$HOME/.k8s-dotfiles/bin/minikube" ]
 }
 
-@test "minikube should exist in bin dir and be executable" {
+@test "k8sgpt should exist in bin dir and be executable" {
   assert [ -x "$HOME/.k8s-dotfiles/bin/k8sgpt" ]
 }
