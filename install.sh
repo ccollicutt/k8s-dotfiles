@@ -271,7 +271,7 @@ function install_binaries(){
   if [[ ! -f "$BIN_DIR"/yq ]]; then
     log debug "installing yq"
     pushd "$TMP_DIR" || log error "pushd fail"
-      wget -q https://github.com/mikefarah/yq/releases/download/v4.12.0/yq_linux_amd64
+      wget -q https://github.com/mikefarah/yq/releases/download/v4.44.1/yq_linux_amd64
       mv yq_linux_amd64 "$BIN_DIR"/yq
       chmod 755 "$BIN_DIR"/yq
     popd || log error "pushd fail"
